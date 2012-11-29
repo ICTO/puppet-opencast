@@ -14,6 +14,9 @@
 class opencast::params (
   $opencast_pkg               = 'opencast-matterhorn',
   $opencast_profile           = 'admin',
+  $user                       = 'matterhorn',
+  $group                      = 'matterhorn',
+  $configdir                  = '/opt/matterhorn/etc',
   $opencast_server_url        = 'localhost:8080',
   $opencast_admin_url         = 'localhost:8080',
   $opencast_engage_url        = 'localhost:8080',
