@@ -12,11 +12,11 @@ class opencast::config {
   require opencast::params
 
   file {"${opencast::configdir}/config.properties":
-    ensure => present,
-    owner  => $opencast::user,
-    group  => $opencast::group,
-    mode   => '0755',
-    source => 'puppet://modules/opencast/config.properties.erb';
+    ensure  => present,
+    owner   => $opencast::user,
+    group   => $opencast::group,
+    mode    => '0755',
+    content => template('opencast/config.properties.erb');
   }
 
   file {"${opencast::configdir}/matterhorn.conf":
@@ -24,6 +24,6 @@ class opencast::config {
     owner  => $opencast::user,
     group  => $opencast::group,
     mode   => '0755',
-    source => 'puppet://modules/opencast/matterhorn.conf.erb';
+    source => template('opencast/matterhorn.conf.erb');
   }
 }
