@@ -31,19 +31,19 @@ class opencast::config {
   $opencast_gst_launch_path = $opencast::params::opencast_gst_launch_path
   $opencast_admin_email = $opencast::params::opencast_admin_email
 
-  file {"${opencast::configdir}/config.properties":
+  file {"${opencast::params::configdir}/config.properties":
     ensure  => present,
-    owner   => $opencast::user,
-    group   => $opencast::group,
-    mode    => '0755',
+    owner   => $opencast::params::user,
+    group   => $opencast::params::group,
+    mode    => '0644',
     content => template('opencast/config.properties.erb');
   }
 
-  file {"${opencast::configdir}/matterhorn.conf":
+  file {"${opencast::params::configdir}/matterhorn.conf":
     ensure  => present,
-    owner   => $opencast::user,
-    group   => $opencast::group,
-    mode    => '0755',
+    owner   => $opencast::params::user,
+    group   => $opencast::params::group,
+    mode    => '0644',
     content => template('opencast/matterhorn.conf.erb');
   }
 }
