@@ -9,7 +9,27 @@
 
 class opencast::config {
 
-  require opencast::params
+  Class['opencast::params'] -> Class['opencast::config']
+
+  $opencast_profile = $opencast::params::opencast_profile
+  $opencast_server_url = $opencast::params::opencast_server_url
+  $opencast_admin_url = $opencast::params::opencast_admin_url
+  $opencast_engage_url = $opencast::params::opencast_engage_url
+  $opencast_storage_dir = $opencast::params::opencast_storage_dir
+  $opencast_digest_user_name = $opencast::params::opencast_digest_user_name
+  $opencast_digest_user_pass = $opencast::params::opencast_digest_user_pass
+  $opencast_enable_demo_user = $opencast::params::opencast_enable_demo_user
+  $opencast_streaming_url = $opencast::params::opencast_streaming_url
+  $opencast_db_vendor = $opencast::params::opencast_db_vendor
+  $opencast_db_driver = $opencast::params::opencast_db_driver
+  $opencast_db_url = $opencast::params::opencast_db_url
+  $opencast_db_user = $opencast::params::opencast_db_user
+  $opencast_db_pass = $opencast::params::opencast_db_pass
+  $opencast_ffmpeg_path = $opencast::params::opencast_ffmpeg_path
+  $opencast_mediainfo_path = $opencast::params::opencast_mediainfo_path
+  $opencast_tesseract_path = $opencast::params::opencast_tesseract_path
+  $opencast_gst_launch_path = $opencast::params::opencast_gst_launch_path
+  $opencast_admin_email = $opencast::params::opencast_admin_email
 
   file {"${opencast::configdir}/config.properties":
     ensure  => present,
@@ -20,10 +40,10 @@ class opencast::config {
   }
 
   file {"${opencast::configdir}/matterhorn.conf":
-    ensure => present,
-    owner  => $opencast::user,
-    group  => $opencast::group,
-    mode   => '0755',
-    source => template('opencast/matterhorn.conf.erb');
+    ensure  => present,
+    owner   => $opencast::user,
+    group   => $opencast::group,
+    mode    => '0755',
+    content => template('opencast/matterhorn.conf.erb');
   }
 }
