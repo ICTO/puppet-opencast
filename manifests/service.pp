@@ -5,5 +5,7 @@
 
 class opencast::service {
 
-  require opencast::params
+  service {'matterhorn':
+    ensure => 'running';
+  }
 }
