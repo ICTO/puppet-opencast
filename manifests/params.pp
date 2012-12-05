@@ -35,6 +35,11 @@ class opencast::params (
   $opencast_tesseract_path    = '/usr/bin/tesseract',
   $opencast_gst_launch_path   = '/usr/bin/gst-launch-0.10',
   $opencast_admin_email       = 'admin@localhost'
+  $config_segmenting          = false,
+  $stabilitythreshold         = '5',
+  $changesthreshold           = '0.05',
+  $usertracking_enable        = undef,
+  $max_concurrent             = undef
 ) {
 
 }
