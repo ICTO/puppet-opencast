@@ -54,7 +54,7 @@ class opencast::config {
   if $opencast::params::config_segmenting {
     file {"${opencast::params::configdir}/services/org.opencastproject.analysis.vsegmenter.VideoSegmenter.properties":
       ensure  => file,
-      user    => $opencast::params::user,
+      owner   => $opencast::params::user,
       group   => $opencast::params::group,
       mode    => 0644,
       content => template('opencast/services/org.opencastproject.analysis.vsegmenter.VideoSegmenter.properties.erb');
@@ -64,7 +64,7 @@ class opencast::config {
   if $usertracking_enable != undef {
     file {"${opencast::params::configdir}/services/org.opencastproject.usertracking.impl.UserTrackingServiceImpl.properties":
       ensure  => file,
-      user    => $opencast::params::user,
+      owner   => $opencast::params::user,
       group   => $opencast::params::group,
       mode    => 0644,
       content => template('opencast/services/org.opencastproject.usertracking.impl.UserTrackingServiceImpl.properties.erb');
@@ -74,7 +74,7 @@ class opencast::config {
   if $max_concurrent != undef {
     file {"${opencast::params::configdir}/services/org.opencastproject.workflow.impl.WorkflowServiceImpl.properties":
       ensure  => file,
-      user    => $opencast::params::user,
+      owner   => $opencast::params::user,
       group   => $opencast::params::group,
       mode    => 0644,
       content => template('opencast/services/org.opencastproject.workflow.impl.WorkflowServiceImpl.properties.erb');
