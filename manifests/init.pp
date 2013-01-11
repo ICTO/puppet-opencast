@@ -30,7 +30,7 @@ class opencast (
   $storage_dir          = $opencast::params::storage_dir,
   $digest_user_name     = $opencast::params::digest_user_name,
   $digest_user_pass     = $opencast::params::digest_user_pass,
-  $enable_demo_admin    = $opencast::params::enable_admin_user
+  $enable_demo_admin    = $opencast::params::enable_admin_user,
   $enable_demo_user     = $opencast::params::enable_demo_user,
   $streaming_url        = $opencast::params::streaming_url,
   $db_vendor            = $opencast::params::db_vendor,
