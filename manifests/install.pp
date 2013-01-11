@@ -5,9 +5,7 @@
 
 class opencast::install {
 
-  require opencast::params
-
-  package {$::opencast::params::opencast_pkg:
+  package {$::opencast::opencast_pkg:
     ensure => installed;
   }
 

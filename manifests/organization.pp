@@ -64,23 +64,23 @@ define opencast::organization (
   $organization_mobile_redirect_description
 ) {
 
-  file{"${opencast::params::configdir}/load/org.opencastproject.organization-${organization_id}.cfg":
+  file{"${opencast::configdir}/load/org.opencastproject.organization-${organization_id}.cfg":
     ensure  => file,
     content => template("opencast/load/org.opencastproject.organization-mh_default_org.cfg.erb"),
-    owner   => $opencast::params::user,
-    group   => $opencast::params::group,
+    owner   => $opencast::user,
+    group   => $opencast::group,
     mode    => 0644,
-    require => Package[$opencast::params::opencast_pkg],
+    require => Package[$opencast::opencast_pkg],
     notify  => Service[matterhorn]
   }
 
-  file{"${opencast::params::configdir}/security/${organization_id}.xml":
+  file{"${opencast::configdir}/security/${organization_id}.xml":
     ensure  => file,
     content => template(opencast/security/mh_default_org.xml.erb),
-    owner   => $opencast::params::user,
-    group   => $opencast::params::group,
+    owner   => $opencast::user,
+    group   => $opencast::group,
     mode    => 0644,
-    require => Package[$opencast::params::opencast_pkg],
+    require => Package[$opencast::opencast_pkg],
     notify  => Service[matterhorn]
   }
 }

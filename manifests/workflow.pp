@@ -3,10 +3,10 @@ define opencast::workflow (
   $content
 ) {
 
-  file {"${opencast::params::configdir}/workflows/${workflow}.xml":
+  file {"${opencast::configdir}/workflows/${workflow}.xml":
     ensure  => file,
-    user    => $opencast::params::user,
-    group   => $opencast::params::group,
+    user    => $opencast::user,
+    group   => $opencast::group,
     mode    => 0644,
     content => $content;
   }
