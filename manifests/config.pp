@@ -9,6 +9,33 @@
 
 class opencast::config {
 
+  $server_url = $::opencast::server_url
+  $admin_url = $::opencast::admin_url
+  $engage_url = $::opencast::engage_url
+  $storage_dir = $::opencast::storage_dir
+  $digest_user_name = $::opencast::digest_user_name
+  $digest_user_pass = $::opencast::digest_user_pass
+  $enable_demo_admin = $::opencast::enable_demo_admin
+  $demo_admin_name = $::opencast::demo_admin_name
+  $demo_admin_pass = $::opencast::demo_admin_pass
+  $enable_demo_user = $::opencast::enable_demo_user
+  $streaming_url = $::opencast::streaming_url
+  $db_vendor = $::opencast::db_vendor
+  $db_driver = $::opencast::db_driver
+  $db_url = $::opencast::db_url
+  $db_user = $::opencast::db_user
+  $db_pass = $::opencast::db_pass
+  $ffmpeg_path = $::opencast::ffmpeg_path
+  $mediainfo_path = $::opencast::mediainfo_path
+  $tesseract_path = $::opencast::tesseract_path
+  $gst_launch_path = $::opencast::gst_launch_path
+  $admin_email = $::opencast::admin_email
+  $config_segmenting = $::opencast::config_segmenting
+  $stabilitythreshold = $::opencast::stabilitythreshold
+  $changesthreshold = $::opencast::changesthreshold
+  $usertracking_enable = $::opencast::usertracking_enable
+  $max_concurrent = $::opencast::max_concurrent
+
   file {"${opencast::configdir}/config.properties":
     ensure  => present,
     owner   => $opencast::user,

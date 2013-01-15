@@ -50,11 +50,7 @@ class opencast (
   $max_concurrent       = $opencast::params::max_concurrent
 ) inherits opencast::params {
 
-  include opencast::install
-  include opencast::config
-  include opencast::service
-
-  Class['opencast::install'] ->
-  Class['opencast::config'] ->
-  Class['opencast::service']
+  class{'opencast::install':;} ~>
+  class{'opencast::config':;} ~>
+  class{'opencast::service':;}
 }
