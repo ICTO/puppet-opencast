@@ -4,6 +4,7 @@ This is the opencast matterhorn module for installing and configuring opencast m
 
 ## Use
 
+```
 class {'opencast':
     opencast_pkg => 'opencast-matterhorn',
     profile      => 'admin',
@@ -15,29 +16,35 @@ class {'opencast':
     db_pass      => 'opencast',
     storage_dir  => '/var/opencast';
 }
+```
 
 For more parameters and their defaults have a look at the params.pp class .
 
 ### Workflows
 
+```
 opencast::workflow { 'encode-archive':
     content => $content;
 }
+```
 
 ### Encodings
 
 Type can be ffmpeg or gstreamer.
 
+```
 opencast::encoding {'h264-high':
     content => $content,
     $type   => 'ffmpeg';
 }
+```
 
 ### Organization
 
 Add an organization to the installation, a default organization is always added
 upon installation. This is only needed for extra organizations.
 
+```
 opencast::organization { 'organization2':
     organization_name   => 'organization2',
     organization_server => 'org2.opencast.org',
@@ -45,6 +52,7 @@ opencast::organization { 'organization2':
     organization_enable_episode => 'true',
     organization_download_link = > 'true';
 }
+```
 
 for more parameters and their defaults look at organization.pp .
 
