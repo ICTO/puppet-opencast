@@ -13,6 +13,7 @@
     <!-- ################ -->
     <!-- # URL SECURITY # -->
     <!-- ################ -->
+
     <!-- Allow anonymous access to the login form -->
     <sec:intercept-url pattern="/login.html" access="ROLE_ANONYMOUS" />
 
@@ -45,7 +46,7 @@
     <!-- Secure the system management URLs for admins only -->
     <sec:intercept-url pattern="/services/*" access="ROLE_ADMIN" />
     <sec:intercept-url pattern="/system/**" access="ROLE_ADMIN" />
-
+    
     <!-- Secure the user management URLs for admins only -->
     <sec:intercept-url pattern="/users/**" access="ROLE_ADMIN" />
     <sec:intercept-url pattern="/admin/users.html" access="ROLE_ADMIN" />
@@ -91,15 +92,16 @@
     <sec:anonymous enabled="false" />
 
     <!-- Enables CAS Single Sign Out -->
-	<sec:logout logout-success-url="/cas-logout.jsp"/>
-	<sec:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
-	<sec:custom-filter ref="singleLogoutFilter" before="FORM_LOGIN_FILTER"/>
+    <sec:logout logout-success-url="/cas-logout.jsp"/>
+    <sec:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
+    <sec:custom-filter ref="singleLogoutFilter" before="FORM_LOGIN_FILTER"/>
+
   </sec:http>
 
   <!-- ######################################## -->
-  <!-- # Authentication Entry and Exit Points # -->
+  <!-- # Custom Anonymous Filter Definition   # -->
   <!-- ######################################## -->
-
+ 
   <bean id="anonymousFilter" class="org.opencastproject.kernel.security.TrustedAnonymousAuthenticationFilter">
     <property name="userAttribute" ref="anonymousUserAttributes" />
     <property name="key" value="anonymousKey" />
@@ -113,12 +115,12 @@
   <!-- ######################################## -->
   <!-- # Authentication Entry and Exit Points # -->
   <!-- ######################################## -->
+
   <!-- Differentiates between "normal" user requests and those requesting digest auth -->
   <bean id="matterhornEntryPoint" class="org.opencastproject.kernel.security.DelegatingAuthenticationEntryPoint">
     <property name="userEntryPoint" ref="casEntryPoint" />
     <property name="digestAuthenticationEntryPoint" ref="digestEntryPoint" />
   </bean>
-
 
   <!-- Returns a 401 request for authentication via digest auth -->
   <bean id="digestEntryPoint" class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
@@ -138,7 +140,6 @@
     </property>
   </bean>
 
-
   <!-- ################# -->
   <!-- # Digest Filter # -->
   <!-- ################# -->
@@ -153,7 +154,6 @@
       <bean class="org.springframework.security.core.userdetails.cache.NullUserCache" />
     </property>
   </bean>
-
 
   <!-- ####################### -->
   <!-- # OAuth (LTI) Support # -->
@@ -201,23 +201,23 @@
 
   <bean id="casEntryPoint"
     class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
-    <property name="loginUrl" value="https://auth-test.berkeley.edu/cas/login"/>
+    <property name="loginUrl" value="<%= cas_login_url %>"/>
     <property name="serviceProperties" ref="serviceProperties"/>
   </bean>
 
   <bean id="serviceProperties"
-        class="org.springframework.security.cas.ServiceProperties">
-    <property name="service" value="/j_spring_cas_security_check"/>
+    class="org.springframework.security.cas.ServiceProperties">
+    <property name="service" value="<%= server_url %>/j_spring_cas_security_check"/>
     <property name="sendRenew" value="false"/>
   </bean>
   
   <bean id="casAuthenticationProvider"
-      class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+    class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
     <property name="userDetailsService" ref="userDetailsService"/>
     <property name="serviceProperties" ref="serviceProperties" />
     <property name="ticketValidator">
       <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
-        <constructor-arg index="0" value="https://auth-test.berkeley.edu/cas" />
+      <constructor-arg index="0" value="<%= cas_ticket_validator %>" />
       </bean>
     </property>
     <property name="key" value="cas"/>
@@ -228,14 +228,12 @@
 
   <!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
   <bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
-    <constructor-arg value="https://auth-test.berkeley.edu/cas/logout"/>
+  <constructor-arg value="<%= cas_logout_url %>"/>
     <constructor-arg>
       <bean class= "org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
     </constructor-arg>
     <property name="filterProcessesUrl" value="/j_spring_cas_security_logout"/>
   </bean>
-
-
 
   <!-- #################### -->
   <!-- # OSGI Integration # -->
