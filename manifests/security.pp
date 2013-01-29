@@ -52,6 +52,8 @@ define opencast::security (
   $ldap_roleattributes = undef
 ) {
 
+  $server_url = $::opencast::server_url
+
   if $enable_cas {
     file{"${opencast::configdir}/security/${organization_id}.xml":
       ensure  => file,
