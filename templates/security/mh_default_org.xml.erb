@@ -25,6 +25,7 @@
     <!-- ################ -->
     <!-- # URL SECURITY # -->
     <!-- ################ -->
+
     <!-- Allow anonymous access to the login form -->
     <sec:intercept-url pattern="/login.html" access="ROLE_ANONYMOUS" />
 
@@ -86,9 +87,9 @@
 
     <!-- Digest auth is used by capture agents and is used to enable transparent clustering of services -->
     <sec:custom-filter position="BASIC_AUTH_FILTER" ref="digestFilter" />
-	  
-    <!-- Matterhorn is shipping its own implementation of the anonymous filter -->
-    <sec:custom-filter ref="anonymousFilter" position="ANONYMOUS_FILTER" />
+
+	  <!-- Matterhorn is shipping its own implementation of the anonymous filter -->
+	  <sec:custom-filter ref="anonymousFilter" position="ANONYMOUS_FILTER" />
 
     <!--
       2-legged oauth is used by trusted 3rd party applications, including LTI producers.
@@ -107,12 +108,13 @@
 
     <!-- Enables log out -->
     <sec:logout />
+
   </sec:http>
 
   <!-- ######################################## -->
-  <!-- # Authentication Entry and Exit Points # -->
+  <!-- # Custom Anonymous Filter Definition   # -->
   <!-- ######################################## -->
-
+ 
   <bean id="anonymousFilter" class="org.opencastproject.kernel.security.TrustedAnonymousAuthenticationFilter">
     <property name="userAttribute" ref="anonymousUserAttributes" />
     <property name="key" value="anonymousKey" />
@@ -126,6 +128,7 @@
   <!-- ######################################## -->
   <!-- # Authentication Entry and Exit Points # -->
   <!-- ######################################## -->
+
   <!-- Differentiates between "normal" user requests and those requesting digest auth -->
   <bean id="matterhornEntryPoint" class="org.opencastproject.kernel.security.DelegatingAuthenticationEntryPoint">
     <property name="userEntryPoint" ref="userEntryPoint" />
@@ -155,7 +158,6 @@
     </property>
   </bean>
 
-
   <!-- ################# -->
   <!-- # Digest Filter # -->
   <!-- ################# -->
@@ -170,7 +172,6 @@
       <bean class="org.springframework.security.core.userdetails.cache.NullUserCache" />
     </property>
   </bean>
-
 
   <!-- ####################### -->
   <!-- # OAuth (LTI) Support # -->
@@ -195,10 +196,10 @@
       <bean class="org.opencastproject.kernel.security.LtiLaunchAuthenticationHandler">
         <constructor-arg index="0" ref="userDetailsService" />
 	      <!-- Uncomment to allow the included keys to be trusted to provide known user details
-	<constructor-arg index="1">
-	  <list>
-             <value>trustedKey</value>
-             <value>trustedKey2</value>
+	      <constructor-arg index="1">
+	        <list>
+            <value>trustedKey</value>
+            <value>trustedKey2</value>
           </list>
 	      </constructor-arg>
 	      -->

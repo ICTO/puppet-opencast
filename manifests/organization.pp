@@ -40,12 +40,7 @@
 # [*organization_mobile_redirect_url*]
 #   Url to redirect mobile users to
 #
-# [*organization_mobile_redirect_description*]
-#   Description for mobile users before redirection
-#
-# = Todo:
-# Security file is placed with all default rules, this has to be parameterized
-# so that everything can be configured.
+# [*organization_mobile_redirect_description*]   Description for mobile users before redirection
 #
 
 define opencast::organization (
@@ -74,13 +69,4 @@ define opencast::organization (
     notify  => Service[matterhorn]
   }
 
-  file{"${opencast::configdir}/security/${organization_id}.xml":
-    ensure  => file,
-    content => template(opencast/security/mh_default_org.xml.erb),
-    owner   => $opencast::user,
-    group   => $opencast::group,
-    mode    => 0644,
-    require => Package[$opencast::opencast_pkg],
-    notify  => Service[matterhorn]
   }
-}
