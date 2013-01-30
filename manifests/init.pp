@@ -20,6 +20,7 @@
 #
 class opencast (
   $opencast_pkg         = $opencast::params::opencast_pkg,
+  $opencast_pkg_ensure  = $opencast::params::opencast_pkg_ensure,
   $profile              = $opencast::params::profile,
   $user                 = $opencast::params::user,
   $group                = $opencast::params::group,

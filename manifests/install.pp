@@ -6,7 +6,7 @@
 class opencast::install {
 
   package {$::opencast::opencast_pkg:
-    ensure => installed;
+    ensure => $::opencast::opencast_pkg_ensure;
   }
 
   if $::opencast::profile == 'worker' {

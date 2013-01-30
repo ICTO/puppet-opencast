@@ -13,6 +13,7 @@
 
 class opencast::params {
   $opencast_pkg         = 'opencast-matterhorn'
+  $opencast_pkg_ensure  = installed
   $profile              = 'admin'
   $user                 = 'matterhorn'
   $group                = 'matterhorn'
