@@ -1,4 +1,4 @@
-# == Define: opencast::sercurity
+# == Define: opencast::security
 # Define a new opencast security configuration file with 
 # optional configurion for the ldap connection.
 #
