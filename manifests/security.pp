@@ -57,7 +57,7 @@ define opencast::security (
   if $enable_cas {
     file{"${opencast::configdir}/security/${organization_id}.xml":
       ensure  => file,
-      content => template(opencast/security/security_sample_cas_xml.erb),
+      content => template('opencast/security/security_sample_cas_xml.erb'),
       owner   => $opencast::user,
       group   => $opencast::group,
       mode    => '0644',
@@ -67,7 +67,7 @@ define opencast::security (
   } else {
     file{"${opencast::configdir}/security/${organization_id}.xml":
       ensure  => file,
-      content => template(opencast/security/mh_default_org.xml.erb),
+      content => template('opencast/security/mh_default_org.xml.erb'),
       owner   => $opencast::user,
       group   => $opencast::group,
       mode    => '0644',
@@ -79,7 +79,7 @@ define opencast::security (
   if $enable_ldap {
     file{"${opencast::configdir}/factories/org.opencastproject.userdirectory.ldap.properties":
       ensure  => file,
-      content => template(opencast/factories/org.opencastproject.userdirectory.ldap.properties.erb),
+      content => template('opencast/factories/org.opencastproject.userdirectory.ldap.properties.erb'),
       owner   => $opencast::user,
       group   => $opencast::group,
       mode    => '0644',

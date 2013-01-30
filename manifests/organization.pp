@@ -55,8 +55,8 @@ define opencast::organization (
   $organization_annotation_enable = 'true',
   $organization_media_module_enable = 'true',
   $organization_mobile_redirect = 'false',
-  $organization_mobile_redirect_url,
-  $organization_mobile_redirect_description
+  $organization_mobile_redirect_url = '',
+  $organization_mobile_redirect_description = ''
 ) {
 
   file{"${opencast::configdir}/load/org.opencastproject.organization-${organization_id}.cfg":
