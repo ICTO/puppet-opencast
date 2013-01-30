@@ -69,4 +69,4 @@ define opencast::organization (
     notify  => Service[matterhorn]
   }
 
-  }
+}
