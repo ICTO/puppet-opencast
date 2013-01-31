@@ -44,4 +44,18 @@ class opencast::params {
   $changesthreshold     = '0.05'
   $usertracking_enable  = undef
   $max_concurrent       = undef
+
+  #Setup default directories
+  $local_storage_dir    = $hostname
+  $streaming_dir        = 'streams'
+  $download_dir         = 'downloads'
+  $searchindex_dir      = 'searchindex'
+  $seriesindex_dir      = 'seriesindex'
+  $schedulerindex_dir   = 'schedulerindex'
+  $archive_dir          = 'archive'
+  $archivetmp_dir       = 'archive-temp'
+  $archiveindex_dir     = 'archiveindex'
+  $files_dir            = 'files'
+  $workspace_dir        = 'workspace'
+  $workflowindex_dir    = 'workflowindex'
 }

@@ -13,6 +13,17 @@ class opencast::config {
   $admin_url = $::opencast::admin_url
   $engage_url = $::opencast::engage_url
   $storage_dir = $::opencast::storage_dir
+  $local_storage_dir = "${::opencast::storage_dir}/${::opencast::local_storage_dir}"
+  $streaming_dir = "${::opencast::storage_dir}/${::opencast::streaming_dir}"
+  $download_dir = "${::opencast::storage_dir}/${::opencast::download_dir}"
+  $searchindex_dir = "${::opencast::storage_dir}/${::opencast::searchindex_dir}"
+  $seriesindex_dir = "${::opencast::storage_dir}/${::opencast::seriesindex_dir}"
+  $schedulerindex_dir = "${::opencast::storage_dir}/${::opencast::schedulerindex_dir}"
+  $archive_dir = "${::opencast::storage_dir}/${::opencast::archive_dir}"
+  $archiveindex_dir = "${::opencast::storage_dir}/${::opencast::archiveindex_dir}"
+  $files_dir = "${::opencast::storage_dir}/${::opencast::files_dir}"
+  $workspace_dir = "${::opencast::storage_dir}/${::opencast::workspace_dir}"
+  $workflowindex_dir = "${::opencast::storage_dir}/${::opencast::workflowindex_dir}"
   $digest_user_name = $::opencast::digest_user_name
   $digest_user_pass = $::opencast::digest_user_pass
   $enable_demo_admin = $::opencast::enable_demo_admin
