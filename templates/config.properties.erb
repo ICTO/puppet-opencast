@@ -41,7 +41,7 @@ org.opencastproject.jobs.url=${org.opencastproject.server.url}
 
 # The directory where the system will store its processed files (including temporary files).  This directory should
 # be persistent between reboots (i.e., not /tmp)
-org.opencastproject.storage.dir=<%= storage_dir %>
+org.opencastproject.storage.dir=<%= local_storage_dir %>
 
 # The username and password to present to other Matterhorn servers when calling their REST endpoints.
 # The remote server must contain matching values in its config.properties.
@@ -72,7 +72,7 @@ org.opencastproject.security.demo.loadusers=<%= enable_demo_user %>
 
 # To enable the LDAP user provider, you must uncomment this line, and run on a JVM that provides the
 # "com.sun.jndi.ldap" package.
-#org.osgi.framework.system.packages.extra=com.sun.jndi.ldap,com.sun.net.ssl.internal.ssl
+org.osgi.framework.system.packages.extra=com.sun.jndi.ldap,com.sun.net.ssl.internal.ssl
 
 # The base URL of the streaming server (ususally "rtmp://<SERVER_URL>/matterhorn-engage").
 # ${org.opencastproject.server.url} can not be used, because the streaming server does not use the HTTP protocol.
@@ -81,10 +81,10 @@ org.opencastproject.security.demo.loadusers=<%= enable_demo_user %>
 org.opencastproject.streaming.url=<%= streaming_url %>
 
 # The directory where the matterhorn streaming app for Red5 stores the streams
-org.opencastproject.streaming.directory=${org.opencastproject.storage.dir}/streams
+org.opencastproject.streaming.directory=<%= streaming_dir %>
 
 # The directory to store media, metadata, and attachments for download from the engage tool
-org.opencastproject.download.directory=${org.opencastproject.storage.dir}/downloads
+org.opencastproject.download.directory=<%= download_dir %>
 
 # The base URL for media downloads.
 org.opencastproject.download.url=${org.opencastproject.server.url}/static
@@ -112,9 +112,9 @@ org.opencastproject.db.jdbc.pass=<%= db_pass %>
 
 # Directory to store the search, series and scheduler solr indices.  This should be a persistent and stable directory (default:
 # ${org.opencastproject.storage.dir}/searchindex)
-org.opencastproject.search.solr.dir=${org.opencastproject.storage.dir}/searchindex
-org.opencastproject.series.solr.dir=${org.opencastproject.storage.dir}/seriesindex
-org.opencastproject.scheduler.solr.dir=${org.opencastproject.storage.dir}/schedulerindex
+org.opencastproject.search.solr.dir=<%= searchindex_dir %>
+org.opencastproject.series.solr.dir=<%=seriesindex_dir %>
+org.opencastproject.scheduler.solr.dir=<%=schedulerindex_dir %>
 
 # Url of the dedicated Solr server for use with the search service.  Note that if the url is specified, the local search
 # index as configured using ${org.opencastproject.search.solr.dir} will be ignored. A dedicated Solr server should be
@@ -123,11 +123,11 @@ org.opencastproject.scheduler.solr.dir=${org.opencastproject.storage.dir}/schedu
 #org.opencastproject.search.solr.url=http://localhost:8983/solr/
 
 # The path to the archive repository
-org.opencastproject.episode.rootdir=${org.opencastproject.storage.dir}/archive
+org.opencastproject.episode.rootdir=<%= archive_dir %>
 
 # Directory to store the archive index of the episode service.  This should be a persistent and stable directory (default:
 # ${org.opencastproject.storage.dir}/archive)
-#org.opencastproject.episode.solr.dir=${org.opencastproject.storage.dir}/archiveindex
+#org.opencastproject.episode.solr.dir=<%= archiveindex_dir %>
 
 # Url of the dedicated Solr server for use with the search service.  Note that if the url is specified, the local search
 # index as configured using ${org.opencastproject.search.solr.dir} will be ignored. A dedicated Solr server should be
@@ -136,20 +136,20 @@ org.opencastproject.episode.rootdir=${org.opencastproject.storage.dir}/archive
 #org.opencastproject.episode.solr.url=http://localhost:8983/solr/
 
 # The path to the repository of files used during media processing.
-org.opencastproject.file.repo.path=${org.opencastproject.storage.dir}/files
+org.opencastproject.file.repo.path=<%= files_dir %>
 
 # The base URL of the file server.  When using a shared filesystem between servers, set all servers to use the same URL.
 # Only then will hard linking between the working file repository and the workspace be enabled to prevent downloads.
-#org.opencastproject.file.repo.url=${org.opencastproject.server.url}
+org.opencastproject.file.repo.url=<%= admin_url %>
 
 # The path to the working files (recommend using fast, transient storage)
-org.opencastproject.workspace.rootdir=${org.opencastproject.storage.dir}/workspace
+org.opencastproject.workspace.rootdir=<%= workspace_dir %>
 
 # The ID of the default workflow definition to run when media are ingested
 org.opencastproject.workflow.default.definition=full
 
 # The directory to hold the workflow service's solr configuration and data
-org.opencastproject.workflow.solr.dir=${org.opencastproject.storage.dir}/workflowindex
+org.opencastproject.workflow.solr.dir=<%= workflowindex_dir %>
 
 # Url of the dedicated Solr server to use with the workflow service.  Note that if the url is specified, the local
 # workflow index as configured using ${org.opencastproject.workflow.solr.dir} will be ignored. A dedicated Solr server
