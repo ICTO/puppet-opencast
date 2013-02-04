@@ -46,16 +46,16 @@ class opencast::params {
   $max_concurrent       = undef
 
   #Setup default directories
-  $local_storage_dir    = $::hostname
-  $streaming_dir        = 'streams'
-  $download_dir         = 'downloads'
-  $searchindex_dir      = 'searchindex'
-  $seriesindex_dir      = 'seriesindex'
-  $schedulerindex_dir   = 'schedulerindex'
-  $archive_dir          = 'archive'
-  $archivetmp_dir       = 'archive-temp'
-  $archiveindex_dir     = 'archiveindex'
-  $files_dir            = 'files'
-  $workspace_dir        = 'workspace'
-  $workflowindex_dir    = 'workflowindex'
+  $local_storage_folder   = "private/${hostname}"
+  $streaming_folder       = 'streams'
+  $download_folder        = 'downloads'
+  $searchindex_folder     = 'searchindex'
+  $seriesindex_folder     = 'seriesindex'
+  $schedulerindex_folder  = 'schedulerindex'
+  $archive_folder         = 'archive'
+  $archivetmp_folder      = 'archive-temp'
+  $archiveindex_folder    = 'archiveindex'
+  $files_folder           = 'files'
+  $workspace_folder       = 'workspace'
+  $workflowindex_folder   = 'workflowindex'
 }
