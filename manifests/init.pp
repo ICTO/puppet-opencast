@@ -29,7 +29,7 @@ class opencast (
   $admin_url              = $opencast::params::admin_url,
   $engage_url             = $opencast::params::engage_url,
   $storage_dir            = $opencast::params::storage_dir,
-  $local_storage_folder   = $opencast::params::local_storage_dir,
+  $local_storage_dir      = $opencast::params::local_storage_dir,
   $streaming_folder       = $opencast::params::streaming_dir,
   $download_folder        = $opencast::params::download_dir,
   $searchindex_folder     = $opencast::params::searchindex_dir,
@@ -62,7 +62,6 @@ class opencast (
   $max_concurrent         = $opencast::params::max_concurrent
 ) inherits opencast::params {
 
-  $local_storage_dir  = "${::opencast::storage_dir}/${::opencast::local_storage_folder}"
   $streaming_dir      = "${::opencast::storage_dir}/${::opencast::streaming_folder}"
   $download_dir       = "${::opencast::storage_dir}/${::opencast::download_folder}"
   $searchindex_dir    = "${::opencast::storage_dir}/${::opencast::searchindex_folder}"
