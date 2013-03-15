@@ -45,6 +45,7 @@ class opencast (
   $enable_demo_admin      = $opencast::params::enable_admin_user,
   $enable_demo_user       = $opencast::params::enable_demo_user,
   $streaming_url          = $opencast::params::streaming_url,
+  $download_url           = $opencast::params::download_url,
   $db_vendor              = $opencast::params::db_vendor,
   $db_driver              = $opencast::params::db_driver,
   $db_url                 = $opencast::params::db_url,

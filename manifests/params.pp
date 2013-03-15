@@ -29,6 +29,7 @@ class opencast::params {
   $demo_admin_pass      = 'opencast'
   $enable_demo_user     = false
   $streaming_url        = 'rtmp://localhost/matterhorn_engage'
+  $download_url         = 'http://localhost:8080/static'
   $db_vendor            = 'MySQL'
   $db_driver            = 'com.mysql.jdbc.Driver'
   $db_url               = 'jdbc:mysql://localhost/matterhorn'
