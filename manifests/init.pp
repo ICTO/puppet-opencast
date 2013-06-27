@@ -65,14 +65,14 @@ class opencast (
 
   $streaming_dir      = "${::opencast::storage_dir}/${::opencast::streaming_folder}"
   $download_dir       = "${::opencast::storage_dir}/${::opencast::download_folder}"
-  $searchindex_dir    = "${::opencast::storage_dir}/${::opencast::searchindex_folder}"
-  $seriesindex_dir    = "${::opencast::storage_dir}/${::opencast::seriesindex_folder}"
-  $schedulerindex_dir = "${::opencast::storage_dir}/${::opencast::schedulerindex_folder}"
+  $searchindex_dir    = "${::opencast::local_storage_dir}/${::opencast::searchindex_folder}"
+  $seriesindex_dir    = "${::opencast::local_storage_dir}/${::opencast::seriesindex_folder}"
+  $schedulerindex_dir = "${::opencast::local_storage_dir}/${::opencast::schedulerindex_folder}"
   $archive_dir        = "${::opencast::storage_dir}/${::opencast::archive_folder}"
-  $archiveindex_dir   = "${::opencast::storage_dir}/${::opencast::archiveindex_folder}"
+  $archiveindex_dir   = "${::opencast::local_storage_dir}/${::opencast::archiveindex_folder}"
   $files_dir          = "${::opencast::storage_dir}/${::opencast::files_folder}"
   $workspace_dir      = "${::opencast::storage_dir}/${::opencast::workspace_folder}"
-  $workflowindex_dir  = "${::opencast::storage_dir}/${::opencast::workflowindex_folder}"
+  $workflowindex_dir  = "${::opencast::local_storage_dir}/${::opencast::workflowindex_folder}"
 
   class{'opencast::install':;} ~>
   class{'opencast::config':;} ~>
