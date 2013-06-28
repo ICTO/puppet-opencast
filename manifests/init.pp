@@ -71,7 +71,7 @@ class opencast (
   $archive_dir        = "${::opencast::storage_dir}/${::opencast::archive_folder}"
   $archiveindex_dir   = "${::opencast::local_storage_dir}/${::opencast::archiveindex_folder}"
   $files_dir          = "${::opencast::storage_dir}/${::opencast::files_folder}"
-  $workspace_dir      = "${::opencast::storage_dir}/${::opencast::workspace_folder}"
+  $workspace_dir      = "${::opencast::storage_dir}/${::opencast::workspace_folder}"s
   $workflowindex_dir  = "${::opencast::local_storage_dir}/${::opencast::workflowindex_folder}"
 
   class{'opencast::install':;} ~>

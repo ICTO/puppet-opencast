@@ -7,7 +7,7 @@ define opencast::workflow (
     ensure  => file,
     user    => $opencast::user,
     group   => $opencast::group,
-    mode    => 0644,
+    mode    => '0644',
     content => $content;
   }
 }
