@@ -1,5 +1,5 @@
 # == Define: opencast::security
-# Define a new opencast security configuration file with 
+# Define a new opencast security configuration file with
 # optional configurion for the ldap connection.
 #
 # === Parameters:
@@ -11,7 +11,7 @@
 #   Enable CAS authorization in the config file
 #
 # [*enable_ldap*]
-#   Enable LDAP authentication 
+#   Enable LDAP authentication
 #
 # [*cas_login_url*]
 #   Login url for the CAS server
@@ -42,9 +42,11 @@ define opencast::security (
   $organization_id = $title,
   $enable_cas = false,
   $enable_ldap = false,
+  $entry_url = $fqdn,
   $cas_login_url = undef,
   $cas_ticket_validator = undef,
   $cas_logout_url = undef,
+  $cas_key = undef,
   $ldap_server_url = undef,
   $ldap_user = undef,
   $ldap_pass = undef,

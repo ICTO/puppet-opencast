@@ -9,7 +9,7 @@ instances=1
 keys=org.opencastproject.userdirectory.ldap.url,org.opencastproject.userdirectory.ldap.searchbase,\
 org.opencastproject.userdirectory.ldap.searchfilter,org.opencastproject.userdirectory.ldap.cache.size,\
 org.opencastproject.userdirectory.ldap.cache.expiration,org.opencastproject.userdirectory.ldap.roleattributes,\
-org.opencastproject.userdirectory.ldap.org
+org.opencastproject.userdirectory.ldap.org<% if @ldap_user %>,org.opencastproject.userdirectory.ldap.userDn,org.opencastproject.userdirectory.ldap.password<% end %>
 
 #
 # First sample configuration

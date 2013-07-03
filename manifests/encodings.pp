@@ -1,7 +1,22 @@
+# == Define: opencast::encoding
+# Define a new opencast encoding profile
+#
+# === Parameters:
+#
+# [*encoding*]
+#   title for the encodings file
+#
+# [*content*]
+#   content of the encodings file
+#
+# [*type*]
+#   Define if this is a gstreamer or ffmeg encoding profile
+#
+
 define opencast::encoding (
-  $encoding = $title,
   $content,
-  $type = 'ffmpeg'
+  $encoding = $title,
+  $type = 'ffmpeg',
 ) {
 
   case $type {
@@ -10,7 +25,7 @@ define opencast::encoding (
         ensure  => file,
         user    => $opencast::user,
         group   => $opencast::group,
-        mode    => 0644,
+        mode    => '0644',
         content => $content;
       }
     }
@@ -19,10 +34,10 @@ define opencast::encoding (
         ensure  => file,
         user    => $opencast::user,
         group   => $opencast::group,
-        mode    => 0644,
+        mode    => '0644',
         content => $content;
       }
     }
-    default: { fail("Please specify the encoding type, valid types are ffmpeg or gstreamer")}
+    default: { fail('Please specify the encoding type, valid types are ffmpeg or gstreamer')}
   }
 }

@@ -32,7 +32,7 @@
 #   Enable or disable the annotation service in the engage player.
 #
 # [*organization_media_module_enable*]
-#   Enable or disable media module 
+#   Enable or disable media module
 #
 # [*organization_mobile_redirect*]
 #   Enable or disable redirection of mobile users to a different url
@@ -61,10 +61,10 @@ define opencast::organization (
 
   file{"${opencast::configdir}/load/org.opencastproject.organization-${organization_id}.cfg":
     ensure  => file,
-    content => template("opencast/load/org.opencastproject.organization-mh_default_org.cfg.erb"),
+    content => template('opencast/load/org.opencastproject.organization-mh_default_org.cfg.erb'),
     owner   => $opencast::user,
     group   => $opencast::group,
-    mode    => 0644,
+    mode    => '0644',
     require => Package[$opencast::opencast_pkg],
     notify  => Service[matterhorn]
   }
