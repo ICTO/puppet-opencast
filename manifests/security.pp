@@ -14,7 +14,7 @@
 #   Enable LDAP authentication
 #
 # [*entry_url*]
-#   Url to which the users connect to view to site, in case of using 
+#   Url to which the users connect to view to site, in case of using
 #   a proxy enter this proxy address in place of the actual site url.
 #
 # [*cas_login_url*]
