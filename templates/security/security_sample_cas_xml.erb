@@ -207,7 +207,7 @@
 
   <bean id="serviceProperties"
     class="org.springframework.security.cas.ServiceProperties">
-    <property name="service" value="<%= server_url %>/j_spring_cas_security_check"/>
+    <property name="service" value="<%= entry_url %>/j_spring_cas_security_check"/>
     <property name="sendRenew" value="false"/>
   </bean>
   
@@ -220,7 +220,7 @@
       <constructor-arg index="0" value="<%= cas_ticket_validator %>" />
       </bean>
     </property>
-    <property name="key" value="cas"/>
+    <property name="key" value="<%= cas_key %>"/>
   </bean>
   
   <!-- This filter handles a Single Logout Request from the CAS Server -->
@@ -232,7 +232,7 @@
     <constructor-arg>
       <bean class= "org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
     </constructor-arg>
-    <property name="filterProcessesUrl" value="/j_spring_cas_security_logout"/>
+    <property name="filterProcessesUrl" value="<%= entry_url %>/j_spring_cas_security_logout"/>
   </bean>
 
   <!-- #################### -->

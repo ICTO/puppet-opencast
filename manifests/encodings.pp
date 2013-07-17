@@ -1,3 +1,18 @@
+# == Define: opencast::encoding
+# Define a new opencast encoding profile
+#
+# === Parameters:
+#
+# [*encoding*]
+#   title for the encodings file
+#
+# [*content*]
+#   content of the encodings file
+#
+# [*type*]
+#   Define if this is a gstreamer or ffmeg encoding profile
+#
+
 define opencast::encoding (
   $content,
   $encoding = $title,

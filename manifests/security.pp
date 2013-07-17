@@ -13,6 +13,10 @@
 # [*enable_ldap*]
 #   Enable LDAP authentication
 #
+# [*entry_url*]
+#   Url to which the users connect to view to site, in case of using
+#   a proxy enter this proxy address in place of the actual site url.
+#
 # [*cas_login_url*]
 #   Login url for the CAS server
 #
@@ -21,6 +25,9 @@
 #
 # [*cas_logout_url*]
 #   CAS logout url
+#
+# [*cas_key*]
+#   Unique cas idenitifier key for this application.
 #
 # [*ldap_server_url*]
 #   LDAP server url
@@ -42,9 +49,11 @@ define opencast::security (
   $organization_id = $title,
   $enable_cas = false,
   $enable_ldap = false,
+  $entry_url = $fqdn,
   $cas_login_url = undef,
   $cas_ticket_validator = undef,
   $cas_logout_url = undef,
+  $cas_key = undef,
   $ldap_server_url = undef,
   $ldap_user = undef,
   $ldap_pass = undef,
