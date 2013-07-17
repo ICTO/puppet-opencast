@@ -47,7 +47,7 @@ class opencast::params {
   $max_concurrent       = undef
 
   #Setup default directories
-  $local_storage_dir      = "${storage_dir}/private/${hostname}"
+  $local_storage_dir      = "${storage_dir}/private/${::hostname}"
   $streaming_folder       = 'streams'
   $download_folder        = 'downloads'
   $searchindex_folder     = 'searchindex'

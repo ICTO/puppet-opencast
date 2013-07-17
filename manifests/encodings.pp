@@ -1,6 +1,6 @@
 define opencast::encoding (
-  $encoding = $title,
   $content,
+  $encoding = $title,
   $type = 'ffmpeg'
 ) {
 
@@ -10,7 +10,7 @@ define opencast::encoding (
         ensure  => file,
         user    => $opencast::user,
         group   => $opencast::group,
-        mode    => 0644,
+        mode    => '0644',
         content => $content;
       }
     }
@@ -19,10 +19,10 @@ define opencast::encoding (
         ensure  => file,
         user    => $opencast::user,
         group   => $opencast::group,
-        mode    => 0644,
+        mode    => '0644',
         content => $content;
       }
     }
-    default: { fail("Please specify the encoding type, valid types are ffmpeg or gstreamer")}
+    default: { fail('Please specify the encoding type, valid types are ffmpeg or gstreamer')}
   }
 }

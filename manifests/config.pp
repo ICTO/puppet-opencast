@@ -68,7 +68,7 @@ class opencast::config {
       ensure  => file,
       owner   => $opencast::user,
       group   => $opencast::group,
-      mode    => 0644,
+      mode    => '0644',
       content => template('opencast/services/org.opencastproject.analysis.vsegmenter.VideoSegmenter.properties.erb');
     }
   }
@@ -78,7 +78,7 @@ class opencast::config {
       ensure  => file,
       owner   => $opencast::user,
       group   => $opencast::group,
-      mode    => 0644,
+      mode    => '0644',
       content => template('opencast/services/org.opencastproject.usertracking.impl.UserTrackingServiceImpl.properties.erb');
     }
   }
@@ -88,7 +88,7 @@ class opencast::config {
       ensure  => file,
       owner   => $opencast::user,
       group   => $opencast::group,
-      mode    => 0644,
+      mode    => '0644',
       content => template('opencast/services/org.opencastproject.workflow.impl.WorkflowServiceImpl.properties.erb');
     }
   }

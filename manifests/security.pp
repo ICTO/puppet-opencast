@@ -1,5 +1,5 @@
 # == Define: opencast::security
-# Define a new opencast security configuration file with 
+# Define a new opencast security configuration file with
 # optional configurion for the ldap connection.
 #
 # === Parameters:
@@ -11,7 +11,7 @@
 #   Enable CAS authorization in the config file
 #
 # [*enable_ldap*]
-#   Enable LDAP authentication 
+#   Enable LDAP authentication
 #
 # [*cas_login_url*]
 #   Login url for the CAS server
