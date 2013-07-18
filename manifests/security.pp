@@ -63,43 +63,33 @@ define opencast::security (
 
   $server_url = $::opencast::server_url
 
-  if $enable_cas {
-    file{"${opencast::configdir}/security/${organization_id}.xml":
-      ensure  => file,
-      content => template('opencast/security/security_sample_cas_xml.erb'),
-      owner   => $opencast::user,
-      group   => $opencast::group,
-      mode    => '0644',
-      require => Package[$opencast::opencast_pkg],
-      notify  => Service[matterhorn]
-    }
-  } else {
-    file{"${opencast::configdir}/security/${organization_id}.xml":
-      ensure  => file,
-      content => template('opencast/security/mh_default_org.xml.erb'),
-      owner   => $opencast::user,
-      group   => $opencast::group,
-      mode    => '0644',
-      require => Package[$opencast::opencast_pkg],
-      notify  => Service[matterhorn]
-    }
+  $config_template = $enable_cas ? {
+    true    => 'opencast/security/security_sample_cas_xml.erb',
+    default => 'opencast/security/mh_default_org.xml.erb'
+  }
+    
+  file{"${opencast::configdir}/security/${organization_id}.xml":
+    ensure  => file,
+    content => template($config_template),
+    owner   => $opencast::user,
+    group   => $opencast::group,
+    mode    => '0644',
+    require => Package[$opencast::opencast_pkg],
+    notify  => Service[matterhorn]
   }
 
-  if $enable_ldap {
-    file{"${opencast::configdir}/factories/org.opencastproject.userdirectory.ldap.properties":
-      ensure  => file,
-      content => template('opencast/factories/org.opencastproject.userdirectory.ldap.properties.erb'),
-      owner   => $opencast::user,
-      group   => $opencast::group,
-      mode    => '0644',
-      require => Package[$opencast::opencast_pkg],
-      notify  => Service[matterhorn];
-    }
+  $ldap_file_ensure = $enable_ldap ? {
+    false   => absent,
+    default => file
   }
-  else {
-    file{"${opencast::configdir}/factories/org.opencastproject.userdirectory.ldap.properties":
-      ensure  => absent,
-      notify  => Service[matterhorn];
-    }
+
+  file{"${opencast::configdir}/factories/org.opencastproject.userdirectory.ldap.properties":
+    ensure  => $ldap_file_ensure,
+    content => template('opencast/factories/org.opencastproject.userdirectory.ldap.properties.erb'),
+    owner   => $opencast::user,
+    group   => $opencast::group,
+    mode    => '0644',
+    require => Package[$opencast::opencast_pkg],
+    notify  => Service[matterhorn];
   }
 }
