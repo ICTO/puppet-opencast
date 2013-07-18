@@ -96,4 +96,10 @@ define opencast::security (
       notify  => Service[matterhorn];
     }
   }
+  else {
+    file{"${opencast::configdir}/factories/org.opencastproject.userdirectory.ldap.properties":
+      ensure  => absent,
+      notify  => Service[matterhorn];
+    }
+  }
 }
