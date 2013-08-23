@@ -16,15 +16,15 @@ org.opencastproject.userdirectory.ldap.org<% if @ldap_user %>,org.opencastprojec
 #
 
 # The URL to the LDAP server
-org.opencastproject.userdirectory.ldap.url.1=<%= ldap_server_url %>
+org.opencastproject.userdirectory.ldap.url.1=<%= @ldap_server_url %>
 
 # The user and password to authenticate as with LDAP.  If left commented, the LDAP provider with use an anonymous bind.
 # If uncommenting these, add them to the keys at the bottom of this file.
-org.opencastproject.userdirectory.ldap.userDn.1=<%= ldap_user %>
-org.opencastproject.userdirectory.ldap.password.1=<%= ldap_pass %>
+org.opencastproject.userdirectory.ldap.userDn.1=<%= @ldap_user %>
+org.opencastproject.userdirectory.ldap.password.1=<%= @ldap_pass %>
 
 # The base path within LDAP to search for users
-org.opencastproject.userdirectory.ldap.searchbase.1=<%= ldap_searchbase %>
+org.opencastproject.userdirectory.ldap.searchbase.1=<%= @ldap_searchbase %>
 
 # The search filter to use for identifying users by ID
 org.opencastproject.userdirectory.ldap.searchfilter.1=(uid={0})
@@ -37,7 +37,7 @@ org.opencastproject.userdirectory.ldap.cache.expiration.1=5
 
 # The comma-separated list of attributes that will be translated into roles. Note that the attributes will be prefixed
 # with the string "ROLE_" and the attribute value will be transformed to upper case.
-org.opencastproject.userdirectory.ldap.roleattributes.1=<%= ldap_roleattributes %>
+org.opencastproject.userdirectory.ldap.roleattributes.1=<%= @ldap_roleattributes %>
 
 # The organization for this provider
 org.opencastproject.userdirectory.ldap.org.1=mh_default_org

@@ -1,7 +1,7 @@
-id=<%= organization_id %>
-name=<%= organization_name %>
-server=<%= organization_server %>
-port=<%= organization_port %>
+id=<%= @organization_id %>
+name=<%= @organization_name %>
+server=<%= @organization_server %>
+port=<%= @organization_port %>
 admin_role=ROLE_ADMIN
 anonymous_role=ROLE_ANONYMOUS
 
@@ -16,25 +16,25 @@ prop.logo_small=/engage/ui/img/mh_logos/OpencastLogo.png
 
 # Define which parts of the admin ui should be visible
 
-prop.adminui.i18n_tab_episode.enable=<%= organization_enable_episode %>
-prop.adminui.i18n_tab_users.enable=<%= organization_enable_users %>
+prop.adminui.i18n_tab_episode.enable=<%= @organization_enable_episode %>
+prop.adminui.i18n_tab_users.enable=<%= @organization_enable_users %>
 # Define size of Chunksize on upload in kB
 prop.adminui.chunksize=2024
 # Define whether series metadata pre-population should occur when a recording is scheduled
-prop.adminui.series_prepopulate.enable=<%= organization_series_prepopulate %>
+prop.adminui.series_prepopulate.enable=<%= @organization_series_prepopulate %>
 
 
 # Define which parts of the engage ui should be visible
 
 # flag for displaying the download link, possible values: true, false
-prop.engageui.link_download.enable=<%= organization_download_link %>
+prop.engageui.link_download.enable=<%= @organization_download_link %>
 # flag for enabling annotations globally, possible values: true, false
-prop.engageui.annotations.enable=<%= organization_annotation_enable %>
+prop.engageui.annotations.enable=<%= @organization_annotation_enable %>
 # flag for displaying the media module, possible values: true, false
-prop.engageui.links_media_module.enable=<%= organization_media_module_enable %>
+prop.engageui.links_media_module.enable=<%= @organization_media_module_enable %>
 # flag for displaying a redirect when surfing with a mobile device, possible values: true, false
-prop.engageui.link_mobile_redirect.enable=<%= organization_mobile_redirect %>
+prop.engageui.link_mobile_redirect.enable=<%= @organization_mobile_redirect %>
 # URL for the mobile redirect, possible values: A URL for a html URL tag
-prop.engageui.link_mobile_redirect.url=<%= organization_mobile_redirect_url %>
+prop.engageui.link_mobile_redirect.url=<%= @organization_mobile_redirect_url %>
 # Description for the mobile redirect, possible values: Text
-prop.engageui.link_mobile_redirect.description=<%= organization_mobile_redirect_description %>
+prop.engageui.link_mobile_redirect.description=<%= @organization_mobile_redirect_description %>
