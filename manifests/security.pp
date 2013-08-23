@@ -67,7 +67,7 @@ define opencast::security (
     true    => 'opencast/security/security_sample_cas_xml.erb',
     default => 'opencast/security/mh_default_org.xml.erb'
   }
-    
+
   file{"${opencast::configdir}/security/${organization_id}.xml":
     ensure  => file,
     content => template($config_template),
