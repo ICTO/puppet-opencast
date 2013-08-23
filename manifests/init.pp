@@ -46,7 +46,7 @@ class opencast (
   $enable_demo_user       = $opencast::params::enable_demo_user,
   $streaming_url          = $opencast::params::streaming_url,
   $download_url           = $opencast::params::download_url,
-  $solr_engage_url        = $opencast::params::solr_engage_url,
+  $solr_search_url        = $opencast::params::solr_search_url,
   $solr_workflow_url      = $opencast::params::solr_workflow_url,
   $solr_episode_url       = $opencast::params::solr_episode_url,
   $db_vendor              = $opencast::params::db_vendor,

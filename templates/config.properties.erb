@@ -120,9 +120,10 @@ org.opencastproject.scheduler.solr.dir=<%=schedulerindex_dir %>
 # index as configured using ${org.opencastproject.search.solr.dir} will be ignored. A dedicated Solr server should be
 # set up in order to enable running multiple instances of the search service. Please consult
 # http://lucene.apache.org/solr/ on how to set up a standalone Solr server.
-<% if solr_engage_url %>
-org.opencastproject.episode.solr.url=<%= solr_engage_url %>
-<% end %>
+#org.opencastproject.search.solr.url=http://localhost:8983/solr/
+<% if solr_search_url %>
+org.opencastproject.search.solr.url=<%= solr_search_url %>
+<% end %> 
 
 # The path to the archive repository
 org.opencastproject.episode.rootdir=<%= archive_dir %>
@@ -138,7 +139,7 @@ org.opencastproject.episode.solr.dir=<%= archiveindex_dir %>
 #org.opencastproject.episode.solr.url=http://localhost:8983/solr/
 <% if solr_episode_url %>
 org.opencastproject.episode.solr.url=<%= solr_episode_url %>
-<% end %>
+<% end %> 
 
 # The path to the repository of files used during media processing.
 org.opencastproject.file.repo.path=<%= files_dir %>
