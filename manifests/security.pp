@@ -53,7 +53,7 @@ define opencast::security (
   $cas_login_url = undef,
   $cas_ticket_validator = undef,
   $cas_logout_url = undef,
-  $cas_key = undef,
+  $cas_key = 'opencast',
   $ldap_server_url = undef,
   $ldap_user = undef,
   $ldap_pass = undef,
