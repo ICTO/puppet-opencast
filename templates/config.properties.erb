@@ -121,7 +121,7 @@ org.opencastproject.scheduler.solr.dir=<%=schedulerindex_dir %>
 # set up in order to enable running multiple instances of the search service. Please consult
 # http://lucene.apache.org/solr/ on how to set up a standalone Solr server.
 #org.opencastproject.search.solr.url=http://localhost:8983/solr/
-<% if solr_search_url %>
+<% if @solr_search_url %>
 org.opencastproject.search.solr.url=<%= solr_search_url %>
 <% end %> 
 
@@ -137,7 +137,7 @@ org.opencastproject.episode.solr.dir=<%= archiveindex_dir %>
 # set up in order to enable running multiple instances of the search service. Please consult
 # http://lucene.apache.org/solr/ on how to set up a standalone Solr server.
 #org.opencastproject.episode.solr.url=http://localhost:8983/solr/
-<% if solr_episode_url %>
+<% if @solr_episode_url %>
 org.opencastproject.episode.solr.url=<%= solr_episode_url %>
 <% end %> 
 
@@ -162,7 +162,7 @@ org.opencastproject.workflow.solr.dir=<%= workflowindex_dir %>
 # should be set up in order to enable running multiple instances of the workflow service. Please consult
 # http://lucene.apache.org/solr/ on how to set up a standalone Solr server.
 #org.opencastproject.workflow.solr.url=http://localhost:8983/solr/
-<% if solr_workflow_url %>
+<% if @solr_workflow_url %>
 org.opencastproject.workflow.solr.url=<%= solr_workflow_url %>
 <% end %>
 
