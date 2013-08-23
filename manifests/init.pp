@@ -48,6 +48,7 @@ class opencast (
   $download_url           = $opencast::params::download_url,
   $solr_engage_url        = $opencast::params::solr_engage_url,
   $solr_workflow_url      = $opencast::params::solr_workflow_url,
+  $solr_episode_url       = $opencast::params::solr_episode_url,
   $db_vendor              = $opencast::params::db_vendor,
   $db_driver              = $opencast::params::db_driver,
   $db_url                 = $opencast::params::db_url,
