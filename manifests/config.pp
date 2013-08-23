@@ -31,6 +31,8 @@ class opencast::config {
   $demo_admin_pass      = $::opencast::demo_admin_pass
   $enable_demo_user     = $::opencast::enable_demo_user
   $streaming_url        = $::opencast::streaming_url
+  $solr_engage_url      = $::opencast::solr_engage_url
+  $solr_workflow_url    = $::opencast::solr_workflow_url
   $db_vendor            = $::opencast::db_vendor
   $db_driver            = $::opencast::db_driver
   $db_url               = $::opencast::db_url
