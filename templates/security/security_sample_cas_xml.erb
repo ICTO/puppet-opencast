@@ -74,6 +74,9 @@
     <!-- Digest auth is used by capture agents and is used to enable transparent clustering of services -->
     <sec:custom-filter position="BASIC_AUTH_FILTER" ref="digestFilter" />
 
+    <!-- Matterhorn is shipping its own implementation of the anonymous filter -->
+    <sec:custom-filter ref="anonymousFilter" position="ANONYMOUS_FILTER" />
+
     <!-- CAS auth is used for authentication via browsers -->
     <sec:custom-filter position="FORM_LOGIN_FILTER" ref="casFilter" />
 
@@ -93,7 +96,7 @@
     <sec:anonymous enabled="false" />
 
     <!-- Enables CAS Single Sign Out -->
-    <sec:logout logout-success-url="/cas-logout.jsp"/>
+    <sec:logout logout-success-url="/engage/ui/index.html"/>
     <sec:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
     <sec:custom-filter ref="singleLogoutFilter" before="FORM_LOGIN_FILTER"/>
 
