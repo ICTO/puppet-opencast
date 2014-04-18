@@ -84,8 +84,10 @@
       2-legged oauth is used by trusted 3rd party applications, including LTI producers.
       If you do not plan to use OAuth, comment this out.
     -->
+    <% if @oauth_enable %>
     <sec:custom-filter after="BASIC_AUTH_FILTER" ref="oauthProtectedResourceFilter" />
-
+    <% end %>
+    
     <!-- Enables "remember me" functionality -->
     <sec:remember-me key="matterhorn" user-service-ref="userDetailsService" />
 
