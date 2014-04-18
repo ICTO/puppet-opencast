@@ -58,7 +58,10 @@ define opencast::security (
   $ldap_user = undef,
   $ldap_pass = undef,
   $ldap_searchbase = undef,
-  $ldap_roleattributes = undef
+  $ldap_roleattributes = undef,
+  $oauth_enable = false,
+  $oauth_consumer_key = undef,
+  $oauth_consumer_secret = undef
 ) {
 
   $server_url = $::opencast::server_url
