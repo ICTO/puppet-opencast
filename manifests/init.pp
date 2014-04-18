@@ -8,6 +8,7 @@
 # http://entwinemedia.com/2012/rpm-based-matterhorn-deployment/
 # for more information.
 #
+#
 # === Examples
 #
 #  class { opencast:
