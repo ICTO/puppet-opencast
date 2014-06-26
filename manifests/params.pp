@@ -33,6 +33,7 @@ class opencast::params {
   $solr_search_url      = undef
   $solr_workflow_url    = undef
   $solr_episode_url     = undef
+  $solr_series_url      = undef
   $db_vendor            = 'MySQL'
   $db_driver            = 'com.mysql.jdbc.Driver'
   $db_url               = 'jdbc:mysql://localhost/matterhorn'

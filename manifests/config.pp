@@ -34,6 +34,7 @@ class opencast::config {
   $solr_search_url      = $::opencast::solr_search_url
   $solr_workflow_url    = $::opencast::solr_workflow_url
   $solr_episode_url     = $::opencast::solr_episode_url
+  $solr_series_url      = $::opencast::solr_series_url
   $db_vendor            = $::opencast::db_vendor
   $db_driver            = $::opencast::db_driver
   $db_url               = $::opencast::db_url
