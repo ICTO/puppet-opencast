@@ -49,6 +49,7 @@ class opencast::params {
   $changesthreshold     = '0.05'
   $usertracking_enable  = undef
   $max_concurrent       = undef
+  $java_opts            = '-Xms2048m -Xmx2048m -XX:MaxPermSize=512m'
 
   #Setup default directories
   $local_storage_dir      = "${storage_dir}/private/${::hostname}"

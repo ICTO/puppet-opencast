@@ -14,11 +14,19 @@ class {'opencast':
     db_url       => 'jdbc:mysql://localhost/opencast',
     db_user      => 'opencast',
     db_pass      => 'opencast',
-    storage_dir  => '/var/opencast';
+    storage_dir  => '/var/opencast',
+    java_opts    => '-Xms2048m -Xmx2048m -XX:MaxPermSize=1024m';
 }
 ```
 
 For more parameters and their defaults have a look at the params.pp class .
+Possible profiles are :
+* admin
+* admin-ingest ( admin server with ingest modules )
+* worker
+* ingest ( ingest server with distribute modules )
+* presentation
+* presentation-distribute ( presentation server with distribute modules)
 
 ### Workflows
 
@@ -59,7 +67,7 @@ for more parameters and their defaults look at organization.pp .
 ## Requirements
 
 You have to have a packaged version of opencast matterhorn in your local
-repository. This has to be an adapted version with the profile changes as 
+repository. This has to be an adapted version with the profile changes as
 described on the entwine blog. We use an adapted version of those scripts
 for use on Debian. See https://github.com/ICTO/opencast-ugent.git for more
 info on these adaptations.
