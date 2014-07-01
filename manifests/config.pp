@@ -50,6 +50,7 @@ class opencast::config {
   $changesthreshold     = $::opencast::changesthreshold
   $usertracking_enable  = $::opencast::usertracking_enable
   $max_concurrent       = $::opencast::max_concurrent
+  $java_opts            = $::opencast::java_opts
 
   file {"${opencast::configdir}/config.properties":
     ensure  => present,

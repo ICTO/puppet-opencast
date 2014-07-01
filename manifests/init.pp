@@ -64,7 +64,8 @@ class opencast (
   $stabilitythreshold     = $opencast::params::stabilitythreshold,
   $changesthreshold       = $opencast::params::changesthreshold,
   $usertracking_enable    = $opencast::params::usertracking_enable,
-  $max_concurrent         = $opencast::params::max_concurrent
+  $max_concurrent         = $opencast::params::max_concurrent,
+  $java_opts              = $opencast::params::java_opts
 ) inherits opencast::params {
 
   $streaming_dir      = "${::opencast::storage_dir}/${::opencast::streaming_folder}"
