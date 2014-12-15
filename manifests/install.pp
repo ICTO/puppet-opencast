@@ -23,6 +23,14 @@ class opencast::install {
         ensure => installed;
       'libgstreamer0.10':
         ensure => installed;
+      'hunspell':
+        ensure => installed;
+      'hunspell-en-us':
+        ensure => installed;
+      'myspell-nl':
+        ensure => installed;
+      'sox':
+        ensure => installed;
     }
   }
 }

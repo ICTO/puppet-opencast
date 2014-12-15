@@ -47,6 +47,7 @@
     <!-- Secure the system management URLs for admins only -->
     <sec:intercept-url pattern="/services/*" access="ROLE_ADMIN" />
     <sec:intercept-url pattern="/system/**" access="ROLE_ADMIN" />
+    <sec:intercept-url pattern="/config/**" access="ROLE_ADMIN" />
     
     <!-- Secure the user management URLs for admins only -->
     <sec:intercept-url pattern="/users/**" access="ROLE_ADMIN" />
@@ -73,9 +74,6 @@
 
     <!-- Digest auth is used by capture agents and is used to enable transparent clustering of services -->
     <sec:custom-filter position="BASIC_AUTH_FILTER" ref="digestFilter" />
-
-    <!-- Matterhorn is shipping its own implementation of the anonymous filter -->
-    <sec:custom-filter ref="anonymousFilter" position="ANONYMOUS_FILTER" />
 
     <!-- CAS auth is used for authentication via browsers -->
     <sec:custom-filter position="FORM_LOGIN_FILTER" ref="casFilter" />
@@ -204,6 +202,10 @@
     class="org.springframework.security.cas.web.CasAuthenticationFilter">
     <property name="authenticationManager" ref="authenticationManager"/>
     <property name="authenticationSuccessHandler" ref="authSuccessHandler" />
+    <property name="serviceProperties" ref="serviceProperties" />
+    <property name="authenticationDetailsSource">
+      <bean class="org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource"/>
+    </property>
   </bean>
 
   <bean id="casEntryPoint"
@@ -220,8 +222,12 @@
   
   <bean id="casAuthenticationProvider"
     class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
-    <property name="userDetailsService" ref="userDetailsService"/>
     <property name="serviceProperties" ref="serviceProperties" />
+    <property name="authenticationUserDetailsService">
+      <bean class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+          <constructor-arg ref="userDetailsService" />
+      </bean>
+    </property>
     <property name="ticketValidator">
       <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
       <constructor-arg index="0" value="<%= @cas_ticket_validator %>" />

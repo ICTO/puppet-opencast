@@ -56,16 +56,24 @@ class opencast (
   $db_user                = $opencast::params::db_user,
   $db_pass                = $opencast::params::db_pass,
   $ffmpeg_path            = $opencast::params::ffmpeg_path,
+  $ffprobe_path           = $opencast::params::ffprobe_path,
   $mediainfo_path         = $opencast::params::mediainfo_path,
   $tesseract_path         = $opencast::params::tesseract_path,
+  $tesseract_options      = $opencast::params::tesseract_options,
   $gst_launch_path        = $opencast::params::gst_launch_path,
+  $hunspell_path          = $opencast::params::hunspell_path,
+  $hunspell_command       = $opencast::params::hunspell_command,
+  $sox_path               = $opencast::params::sox_path,
   $admin_email            = $opencast::params::admin_email,
   $config_segmenting      = $opencast::params::config_segmenting,
   $stabilitythreshold     = $opencast::params::stabilitythreshold,
   $changesthreshold       = $opencast::params::changesthreshold,
   $usertracking_enable    = $opencast::params::usertracking_enable,
   $max_concurrent         = $opencast::params::max_concurrent,
-  $java_opts              = $opencast::params::java_opts
+  $java_opts              = $opencast::params::java_opts,
+  $default_workflow         = $opencast::params::default_workflow,
+  $workspace_cleanup_period = $opencast::params::workspace_cleanup_period,
+  $workspace_cleanup_age    = $opencast::params::workspace_cleanup_age
 ) inherits opencast::params {
 
   $streaming_dir      = "${::opencast::storage_dir}/${::opencast::streaming_folder}"
