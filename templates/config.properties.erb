@@ -74,11 +74,12 @@ org.osgi.framework.system.packages.extra=com.sun.jndi.ldap,com.sun.net.ssl.inter
 # ${org.opencastproject.server.url} can not be used, because the streaming server does not use the HTTP protocol.
 # Streaming is not included in the default workflow, since the Red5 streaming server is a 3rd party component that
 # requires separate installation.
+<% if @streaming_url %>
 org.opencastproject.streaming.url=<%= @streaming_url %>
 
 # The directory where the matterhorn streaming app for Red5 stores the streams
 org.opencastproject.streaming.directory=<%= @streaming_dir %>
-
+<% end %>
 # Some newer streaming server versions expect an "flv:" tag within the rtmp URL.
 # Not every RTMP-streaming server is compatible with this (i.e. nginx), so this
 # is the compatibility mode to the old syntax.

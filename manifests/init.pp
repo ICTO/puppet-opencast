@@ -73,7 +73,8 @@ class opencast (
   $java_opts              = $opencast::params::java_opts,
   $default_workflow         = $opencast::params::default_workflow,
   $workspace_cleanup_period = $opencast::params::workspace_cleanup_period,
-  $workspace_cleanup_age    = $opencast::params::workspace_cleanup_age
+  $workspace_cleanup_age    = $opencast::params::workspace_cleanup_age,
+  $flvcompatibility         = $opencast::params::flvcompatibility
 ) inherits opencast::params {
 
   $streaming_dir      = "${::opencast::storage_dir}/${::opencast::streaming_folder}"

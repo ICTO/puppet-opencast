@@ -58,6 +58,7 @@ class opencast::params {
   $default_workflow         = 'full'
   $workspace_cleanup_period = '86400'
   $workspace_cleanup_age    = '2592000'
+  $flvcompatibility         = 'false'
 
   #Setup default directories
   $local_storage_dir      = "${storage_dir}/private/${::hostname}"
