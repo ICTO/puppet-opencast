@@ -172,10 +172,10 @@ org.opencastproject.workspace.rootdir=<%= @workspace_dir %>
 org.opencastproject.workflow.solr.dir=<%= @workflowindex_dir %>
 
 # The scheduled period in seconds, at which a workspace cleanup operation is performed
-org.opencastproject.workspace.cleanup.period=86400
+org.opencastproject.workspace.cleanup.period=<%= @workspace_cleanup_period %>
 
 # The maximum age a file must reach in seconds before a deletion of the file in the workspace cleanup operation is performed
-org.opencastproject.workspace.cleanup.max.age=2592000
+org.opencastproject.workspace.cleanup.max.age=<% @workspace_cleanup_age %>
 
 # The ID of the default workflow definition to run when media are ingested
 org.opencastproject.workflow.default.definition=<%= @default_workflow %>
@@ -233,14 +233,14 @@ org.opencastproject.textanalyzer.tesseract.path=<%= @tesseract_path %>
 # Path to the hunspell binary used by the matterhorn-dictionary-hunspell
 # module. The default ist just "hunspell" which requires hunspell to be in the
 # search path.
-org.opencastproject.dictionary.hunspell.binary=<%= @hunspell_path %>
+org.opencastproject.dictionary.hunspell.binary=hunspell
 
 # Command to use for filtering text by the matterhorn-dictionary-hunspell
 # module. The command is appended to the hunspell binary path. It should filter
 # the text from stdin and print the recognized words to stdout. Usually this
 # should be a combination of "-G" and a list of dictionaries. The default is to
 # use "-d de_DE,en_GB,en_US -G".
-org.opencastproject.dictionary.hunspell.command=<%= @hunspell_command %>
+org.opencastproject.dictionary.hunspell.command="-d de_DE,en_GB,en_US -G"
 
 # Path to the gst-launch binary. Its name is sufficient if the binary is in the
 # system path (default: gst-launch)
