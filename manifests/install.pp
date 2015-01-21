@@ -9,19 +9,15 @@ class opencast::install {
     ensure => $::opencast::opencast_pkg_ensure;
   }
 
-  if $::opencast::profile == 'worker' {
+  if $::opencast::profile == 'worker' or $::opencast::profile == 'allinone' {
     package {
-      'ffmpeg':
+      'opencast-matterhorn-dependencies':
         ensure => installed;
-      'mediainfo':
+      'hunspell':
         ensure => installed;
-      'tesseract-ocr':
+      'hunspell-en-us':
         ensure => installed;
-      'tesseract-ocr-eng':
-        ensure => installed;
-      'tesseract-ocr-nld':
-        ensure => installed;
-      'libgstreamer0.10':
+      'myspell-nl':
         ensure => installed;
     }
   }

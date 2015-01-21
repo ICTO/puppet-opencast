@@ -44,18 +44,20 @@
 #
 
 define opencast::organization (
-  $organization_id = $title,
-  $organization_name = 'Opencast Project',
-  $organization_server = 'localhost',
-  $organization_port = '8080',
-  $organization_enable_episode = 'true',
-  $organization_enable_users = 'false',
-  $organization_series_prepopulate = 'false',
-  $organization_download_link = 'false',
-  $organization_annotation_enable = 'true',
-  $organization_media_module_enable = 'true',
-  $organization_mobile_redirect = 'false',
-  $organization_mobile_redirect_url = '',
+  $organization_id                          = $title,
+  $admin_url                                = 'http://localhost:8080',
+  $engage_url                               = 'http://localhost:8080',
+  $organization_name                        = 'Opencast Project',
+  $organization_server                      = 'localhost',
+  $organization_port                        = '8080',
+  $organization_enable_episode              = 'true',
+  $organization_enable_users                = 'false',
+  $organization_series_prepopulate          = 'false',
+  $organization_download_link               = 'false',
+  $organization_annotation_enable           = 'true',
+  $organization_media_module_enable         = 'true',
+  $organization_mobile_redirect             = 'false',
+  $organization_mobile_redirect_url         = '',
   $organization_mobile_redirect_description = ''
 ) {
 
