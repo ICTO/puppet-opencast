@@ -1,11 +1,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:sec="http://www.springframework.org/schema/security"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-       http://www.springframework.org/schema/osgi  
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/osgi
        http://www.springframework.org/schema/osgi/spring-osgi.xsd
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+  <!-- ######################################## -->
+  <!-- # Open and unsecured url patterns      # -->
+  <!-- ######################################## -->
+
+  <sec:http pattern="/admin/img/**" security="none" />
+  <sec:http pattern="/favicon.ico" security="none" />
+  <sec:http pattern="/images/**" security="none" />
+  <sec:http pattern="/img/**" security="none" />
+  <sec:http pattern="/js/**" security="none" />
+  <sec:http pattern="/style.css" security="none" />
+  <sec:http pattern="/css/**" security="none" />
 
   <sec:http create-session="ifRequired" servlet-api-provision="true" realm="Opencast Matterhorn"
     entry-point-ref="matterhornEntryPoint">
@@ -48,7 +60,7 @@
     <sec:intercept-url pattern="/services/*" access="ROLE_ADMIN" />
     <sec:intercept-url pattern="/system/**" access="ROLE_ADMIN" />
     <sec:intercept-url pattern="/config/**" access="ROLE_ADMIN" />
-    
+
     <!-- Secure the user management URLs for admins only -->
     <sec:intercept-url pattern="/users/**" access="ROLE_ADMIN" />
     <sec:intercept-url pattern="/admin/users.html" access="ROLE_ADMIN" />
@@ -85,7 +97,7 @@
     <% if @oauth_enable %>
     <sec:custom-filter after="BASIC_AUTH_FILTER" ref="oauthProtectedResourceFilter" />
     <% end %>
-    
+
     <!-- Enables "remember me" functionality -->
     <sec:remember-me key="matterhorn" user-service-ref="userDetailsService" />
 
@@ -93,7 +105,7 @@
     <sec:request-cache ref="requestCache" />
 
     <!-- If any URLs are to be exposed to anonymous users, the "sec:anonymous" filter must be present -->
-    <sec:anonymous enabled="false" />
+    <sec:anonymous enabled="true" />
 
     <!-- Enables CAS Single Sign Out -->
     <sec:logout logout-success-url="/engage/ui/index.html"/>
@@ -105,12 +117,12 @@
   <!-- ######################################## -->
   <!-- # Custom Anonymous Filter Definition   # -->
   <!-- ######################################## -->
- 
+
   <bean id="anonymousFilter" class="org.opencastproject.kernel.security.TrustedAnonymousAuthenticationFilter">
     <property name="userAttribute" ref="anonymousUserAttributes" />
     <property name="key" value="anonymousKey" />
   </bean>
-  
+
   <bean id="anonymousUserAttributes" class="org.springframework.security.core.userdetails.memory.UserAttribute">
     <property name="authoritiesAsString" value="ROLE_ANONYMOUS"/>
     <property name="password" value="empty"/>
@@ -219,7 +231,7 @@
     <property name="service" value="<%= @entry_url %>/j_spring_cas_security_check"/>
     <property name="sendRenew" value="false"/>
   </bean>
-  
+
   <bean id="casAuthenticationProvider"
     class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
     <property name="serviceProperties" ref="serviceProperties" />
@@ -235,7 +247,7 @@
     </property>
     <property name="key" value="<%= @cas_key %>"/>
   </bean>
-  
+
   <!-- This filter handles a Single Logout Request from the CAS Server -->
   <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
 
