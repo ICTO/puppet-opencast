@@ -78,8 +78,7 @@ define opencast::security (
     owner   => $opencast::user,
     group   => $opencast::group,
     mode    => '0644',
-    require => Package[$opencast::opencast_pkg],
-    notify  => Service[matterhorn]
+    require => Package[$opencast::opencast_pkg]
   }
 
   $ldap_file_ensure = $enable_ldap ? {
@@ -93,7 +92,6 @@ define opencast::security (
     owner   => $opencast::user,
     group   => $opencast::group,
     mode    => '0644',
-    require => Package[$opencast::opencast_pkg],
-    notify  => Service[matterhorn];
+    require => Package[$opencast::opencast_pkg]
   }
 }

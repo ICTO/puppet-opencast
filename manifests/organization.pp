@@ -67,8 +67,7 @@ define opencast::organization (
     owner   => $opencast::user,
     group   => $opencast::group,
     mode    => '0644',
-    require => Package[$opencast::opencast_pkg],
-    notify  => Service[matterhorn]
+    require => Package[$opencast::opencast_pkg]
   }
 
 }
