@@ -105,7 +105,7 @@
     <sec:request-cache ref="requestCache" />
 
     <!-- If any URLs are to be exposed to anonymous users, the "sec:anonymous" filter must be present -->
-    <sec:anonymous enabled="true" />
+    <sec:anonymous enabled="<%= @sec_anonymous_enabled  %>" />
 
     <!-- Enables CAS Single Sign Out -->
     <sec:logout logout-success-url="/engage/ui/index.html"/>
@@ -178,8 +178,8 @@
   <% if @oauth_enable %>
   <bean name="oAuthConsumerDetailsService" class="org.opencastproject.kernel.security.OAuthSingleConsumerDetailsService">
     <constructor-arg index="0" ref="userDetailsService" />
-    <constructor-arg index="1" value="<% @oauth_consumer_key %>" />
-    <constructor-arg index="2" value="<% @oauth_consumer_secret %>" />
+    <constructor-arg index="1" value="<%= @oauth_consumer_key %>" />
+    <constructor-arg index="2" value="<%= @oauth_consumer_secret %>" />
     <constructor-arg index="3" value="constructorName" />
   </bean>
 
